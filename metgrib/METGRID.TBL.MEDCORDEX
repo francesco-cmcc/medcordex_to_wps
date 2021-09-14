@@ -638,8 +638,8 @@ name=SST
         fill_missing=0.
         missing_value=-1.E30
         flag_in_output=FLAG_SST
-        masked=land               # the land points must be masked (by F.R. CMCC)
-        interp_land_mask=200100:SST_MASK # to remove all land points 
+        # masked=land               # the land points must be masked (by F.R. CMCC)
+        # interp_land_mask=200100:SST_MASK # to remove all land points 
 ========================================
 name=QV
 mpas_name=qv

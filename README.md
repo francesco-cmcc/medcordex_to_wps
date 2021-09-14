@@ -52,3 +52,12 @@ In the region of interest It has been interpolated to a regular lat/lon grid.
 ## Soil layers
 
 The WRF model to run requires at least 2 soil layers. In our case we have the soil moisture (SOILM) on the upper layer and the soil temperature is missing. So the routine creates 2 dummy soil layers. The upper layer (depth 0 cm) has the soil moisture equals to SOILM and the soil temperature equals to the mean T2M in summer. The bottom soil layer (depth 30 cm) is equal to upper soil layer.
+
+## NCL version details
+```
+ Copyright (C) 1995-2019 - All Rights Reserved
+ University Corporation for Atmospheric Research
+ NCAR Command Language Version 6.6.2
+ The use of this software is governed by a License Agreement.
+ See http://www.ncl.ucar.edu/ for more details.
+```

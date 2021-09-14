@@ -1,4 +1,4 @@
-# Run script description
+# Required keys to run the script
 
 This script was tested with ncl version 6.6.2
 To work properly it requires 4 environment variables

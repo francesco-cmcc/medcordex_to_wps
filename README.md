@@ -46,7 +46,7 @@ In the region of interest It has been interpolated to a regular lat/lon grid.
 ## Output timestep and land-sea mask
 
 1. The Land sea mask is extracted from the domain file `phis_box.nc` given by Laurent Li. 
-2. The SST_FIELD was extrapolated by a seaoverland before the conversion.
+2. The SST_FIELD was extrapolated by a seaoverland technic before the conversion.
 3. All variables into intermediate format have daily frequency. All variables sampled with 3 hours frequency are averaged on daily basis. 
 
 ## Soil layers

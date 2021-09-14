@@ -182,17 +182,8 @@ begin
 	lonE = max(nav_lon)
 	regrid_ocn@DstLLCorner    = (/ latS, lonW /)
 	regrid_ocn@DstURCorner    = (/ latN, lonE /)
-	; #### create a land sea mask for SST [21]
-	sst_msk    = ESMF_regrid(sst_nat ,regrid_ocn)
-	sst_lsm    = where(sst_msk .gt. 0.0, 0, 1)
 	; #### sst interpolation [22]
-	MISSING = 0.0 ; this value is used in the next steps
-	sst_nan = sst_nat
-	sst_nan@_FillValue = MISSING
-	sstK       = sst_nan + 273.15 ; to Kelvin
-	; to extrapolate points over land, should be defined a mask
-	srcmask = where(sst_nat(0,:,:) .gt. 0, 1, 0) 
-	regrid_ocn@SrcGridMask = srcmask
+	sstK       = sst_nat + 273.15 ; to Kelvin
 	sst        = ESMF_regrid(sstK, regrid_ocn)
 	
 	; ## step 3. Write it to intermediate format [23]
@@ -218,11 +209,6 @@ begin
 	UNITS_LSM        = "fraction"
 	DESC_LSM         = "Land-sea mask"
 	
-	FIELD_SST_MASK   = "SST_MASK"
-	UNITS_SST_MASK   = "fraction"
-	DESC_SST_MASK    = "Land-sea mask for ocen variables"
-	
-					  
 	FIELD_SOILT      = "SOILT000"
 	UNITS_SOILT      = "K"
 	DESC_SOILT       = "Soil temperature 0 cm"
@@ -365,8 +351,6 @@ begin
 		; ---- SST
 		wrf_wps_write_int(sst_fname,FIELD_SST,UNITS_SST,\
 						  DESC_SST,sst(t,:,:),sst_opt)
-		wrf_wps_write_int(sst_fname,FIELD_LSM,UNITS_SST_MASK,\
-						  DESC_SST_MASK,sst_lsm(t,:,:),sst_opt)
 	end do
 
 	; #### Write fields on pressure levels  [31]

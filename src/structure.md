@@ -19,7 +19,6 @@
               - Create missing soil variables [18]
           - Regrid sst [19]
               - Define sst interpolation options [20]
-              - create a land sea mask for SST [21]
               - sst interpolation [22]
      - step 3. Write it to intermediate format [23]
           - definition of variable ids to be written in intermediate files [24]

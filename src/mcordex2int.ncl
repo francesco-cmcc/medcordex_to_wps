@@ -60,7 +60,7 @@ begin
 	ATMDATA = read_envvar("ATMDATA")
 	OCNDATA = read_envvar("OCNDATA")
 	OUTPATH = read_envvar("OUTPATH")
-	LAND_MASK_PATH = read_envvar("LAND_MASK_PATH")
+	LANDSEA_MASK_PATH = read_envvar("LANDSEA_MASK_PATH")
 	; ### get files' paths [9]
 	t2m_name        =  get_fpath( ATMDATA, "LMDZ_day_t2m.nc*" )
 	spechumd_name   =  get_fpath( ATMDATA, "LMDZ_3hr_q2m.nc*" )
@@ -80,7 +80,7 @@ begin
 	SPECHUMDfile    =  addfile(spechumd_name, "r")
 	PMSLfile        =  addfile(pmsl_name, "r")
 	PSFCfile        =  addfile(psfc_name, "r")
-	LSMfile         =  addfile(LAND_MASK_PATH, "r")
+	LSMfile         =  addfile(LANDSEA_MASK_PATH, "r")
 	SMfile          =  addfile(soilm_name, "r")
 	U10file         =  addfile(u10_name, "r")
 	V10file         =  addfile(v10_name, "r")

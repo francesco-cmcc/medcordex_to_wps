@@ -4,6 +4,7 @@ module load ncl
 ATM=/work/remhi/pm09220/medcordex/from_cmip5_global/CNRM-CM5/rcp85/r1i1p1/result/atm_regional
 OCN=/work/remhi/pm09220/medcordex/from_cmip5_global/CNRM-CM5/rcp85/r1i1p1/result/oce_regional
 export OUTPATH=../intermediate_out
+export LANDSEA_MASK_PATH=/work/remhi/pm09220/medcordex/mask_laurent/phis_box.nc
 mkdir -p $OUTPATH
 
 for y in {2008..2013}

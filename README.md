@@ -13,7 +13,7 @@ The input variables taken into account to generate wrf intermediate files are li
 | PMSL                | 3hr               | `LMDZ_3hr_slp.nc`    | irregular lat/lon | 0.30x0.35 lat/lon | `FILE_SFC:*` |
 | PSFC                | 3hr               | `LMDZ_3hr_psol.nc`   | irregular lat/lon | 0.30x0.35 lat/lon | `FILE_SFC:*` |
 | SOILM (UPPER)       | 3hr               | `LMDZ_3hr_gqsb.nc`   | irregular lat/lon | 0.30x0.35 lat/lon | `FILE_SFC:*` |
-| LANDSEA             | 3hr               | `LMDZ_3hr_evapot.nc` | irregular lat/lon | 0.30x0.35 lat/lon | `FILE_SFC:*` |
+| LANDSEA             | 3hr               | `phis_box.nc`        | irregular lat/lon | 0.30x0.35 lat/lon | `FILE_SFC:*` |
 | U10                 | 3hr               | `LMDZ_3hr_u10m.nc`   | irregular lat/lon | 0.30x0.35 lat/lon | `FILE_SFC:*` |
 | V10                 | 3hr               | `LMDZ_3hr_v10m.nc`   | irregular lat/lon | 0.30x0.35 lat/lon | `FILE_SFC:*` |
 | SST                 | day               | `MED8_1d_2D.nc`      | curvilinear       | 0.1x0.125 lat/lon | `FILE_SST:*` |
@@ -34,7 +34,8 @@ The atmospheric variables are arranged on an non-regular lat/lon grid.
 
 ![img](C:\Users\Francesco\Desktop\img.png)
 
-In we consider only the region near to the Adriatic sea the grid could be approximated as a regular lat/lon grid (0.30x0.35). So we have used a nearest neighbor interpolation (source to destination) to remap the grid.
+In we consider only the region near to the Adriatic sea the grid could be approximated as a regular lat/lon grid (0.30x0.35). 
+So we have used a nearest neighbor interpolation (source to destination) to remap the grid.
 
 ### the ocean
 
@@ -44,8 +45,9 @@ In the region of interest It has been interpolated to a regular lat/lon grid.
 
 ## Output timestep and land-sea mask
 
-1. The Land sea mask is extracted from evapotranspiration. 
-2. All variables into intermediate format have daily frequency. All variables sampled with 3 hours frequency are averaged on daily basis. 
+1. The Land sea mask is extracted from the domain file `phis_box.nc` given by Laurent Li. 
+2. The SST_FIELD was extrapolated by a seaoverland before the conversion.
+3. All variables into intermediate format have daily frequency. All variables sampled with 3 hours frequency are averaged on daily basis. 
 
 ## Soil layers
 

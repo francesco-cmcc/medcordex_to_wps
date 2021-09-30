@@ -17,6 +17,7 @@
               - interpolate atm fields via NN [16]
               - Daily aggregation for variables with 3h frequency [17]
               - Create missing soil variables [18]
+              - Convert soil moisture from kg/m^2 to relative value [18a]
           - Regrid sst [19]
               - Define sst interpolation options [20]
               - sst interpolation [22]

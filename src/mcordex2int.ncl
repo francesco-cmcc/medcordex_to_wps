@@ -211,17 +211,17 @@ begin
 	UNITS_LSM        = "fraction"
 	DESC_LSM         = "Land-sea mask"
 	
-	FIELD_SOILT      = "SOILT000"
-	UNITS_SOILT      = "K"
-	DESC_SOILT       = "Soil temperature 0 cm"
+	FIELD_ST000010      = "ST000010"
+	UNITS_ST000010      = "K"
+	DESC_ST000010       = "Soil temperature 0-10 cm"
 
 	FIELD_SM000010      = "SM000010"
 	UNITS_SM000010      = "m3 m-3"
 	DESC_SM000010       = "Soil moisture 0-10 cm"
 
-	FIELD_SOILT300   = "SOILT300"
-	UNITS_SOILT300   = "K"
-	DESC_SOILT300    = "Soil temperature 30 cm"
+	FIELD_ST010200   = "ST010200"
+	UNITS_ST010200   = "K"
+	DESC_ST010200    = "Soil temperature 0-20 cm"
 
 	FIELD_SM010200   = "SM010200"
 	UNITS_SM010200   = "m3 m-3"
@@ -336,13 +336,13 @@ begin
 		wrf_wps_write_int(sfc_fname,FIELD_LSM,UNITS_LSM,\
 						  DESC_LSM,lsm(::-1,:),opt)
 		; ---- Upper soil level 
-		wrf_wps_write_int(sfc_fname,FIELD_SOILT,UNITS_SOILT,\
-						  DESC_SOILT,soilt(t,::-1,:),opt)
+		wrf_wps_write_int(sfc_fname,FIELD_ST000010,UNITS_ST000010,\
+						  DESC_ST000010,soilt(t,::-1,:),opt)
 		wrf_wps_write_int(sfc_fname,FIELD_SM000010,UNITS_SM000010,\
 						  DESC_SM000010,sm(t,::-1,:),opt)
 		; ---- lower soil level
-		wrf_wps_write_int(sfc_fname,FIELD_SOILT300,UNITS_SOILT300,\
-						  DESC_SOILT300,soilt(t,::-1,:),opt)
+		wrf_wps_write_int(sfc_fname,FIELD_ST010200,UNITS_ST010200,\
+						  DESC_ST010200,soilt(t,::-1,:),opt)
 		wrf_wps_write_int(sfc_fname,FIELD_SM010200,UNITS_SM010200,\
 						  DESC_SM010200,sm(t,::-1,:),opt)
 		; ---- Wind 

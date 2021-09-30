@@ -154,6 +154,8 @@ begin
 	do t=0,NDAYS-1
 		soilt(t,:,:) = soilt_2d(:,:)
 	end do 
+	; #### Convert soil moisture from kg/m^2 to relative value [18a]
+	sm = where(sm .lt. 100, sm/100, sm * 0.0 + 1.0)
 	; ### Regrid sst [19]
 
 	; #### Define sst interpolation options [20]
@@ -213,17 +215,17 @@ begin
 	UNITS_SOILT      = "K"
 	DESC_SOILT       = "Soil temperature 0 cm"
 
-	FIELD_SOILM      = "SOILM000"
-	UNITS_SOILM      = "kg m-3"
-	DESC_SOILM       = "Soil moisture 0 cm"
+	FIELD_SM000010      = "SM000010"
+	UNITS_SM000010      = "m3 m-3"
+	DESC_SM000010       = "Soil moisture 0-10 cm"
 
 	FIELD_SOILT300   = "SOILT300"
 	UNITS_SOILT300   = "K"
 	DESC_SOILT300    = "Soil temperature 30 cm"
 
-	FIELD_SOILM300   = "SOILM300"
-	UNITS_SOILM300   = "kg m-3"
-	DESC_SOILM300    = "Soil moisture 30 cm"
+	FIELD_SM010200   = "SM010200"
+	UNITS_SM010200   = "m3 m-3"
+	DESC_SM010200    = "Soil moisture 10-200 cm"
 
 	FIELD_SKT        = "SKINTEMP"
 	UNITS_SKT        = "K"
@@ -336,13 +338,13 @@ begin
 		; ---- Upper soil level 
 		wrf_wps_write_int(sfc_fname,FIELD_SOILT,UNITS_SOILT,\
 						  DESC_SOILT,soilt(t,::-1,:),opt)
-		wrf_wps_write_int(sfc_fname,FIELD_SOILM,UNITS_SOILM,\
-						  DESC_SOILM,sm(t,::-1,:),opt)
+		wrf_wps_write_int(sfc_fname,FIELD_SM000010,UNITS_SM000010,\
+						  DESC_SM000010,sm(t,::-1,:),opt)
 		; ---- lower soil level
 		wrf_wps_write_int(sfc_fname,FIELD_SOILT300,UNITS_SOILT300,\
 						  DESC_SOILT300,soilt(t,::-1,:),opt)
-		wrf_wps_write_int(sfc_fname,FIELD_SOILM300,UNITS_SOILM300,\
-						  DESC_SOILM300,sm(t,::-1,:),opt)
+		wrf_wps_write_int(sfc_fname,FIELD_SM010200,UNITS_SM010200,\
+						  DESC_SM010200,sm(t,::-1,:),opt)
 		; ---- Wind 
 		wrf_wps_write_int(sfc_fname,FIELD_U10,UNITS_U10,\
 						  DESC_U10,u10(t,::-1,:),opt)
